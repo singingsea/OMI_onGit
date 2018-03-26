@@ -16,7 +16,7 @@ import pandas as pd
 
 from read_OMI_at_a_location import OMI_at_a_location
 
-OMI_data_path = 'C:\\Projects\\OMI\\NO2\\download\\'
+OMI_data_path = 'C:\\Projects\\OMI\\NO2\\download2\\'
 user_lat = 43.781
 user_lon = -79.468
 process_all_files = True
@@ -182,8 +182,8 @@ for FILE_NAME in fileList:
 		else:
 			df = pd.concat([df,df_single_file])
 			df_at_a_location = pd.concat([df_at_a_location,df_at_a_location_single_file])  
-            
+		print('\nFiles' + outfilename +'have been saved successfully.')
       
-	print('\nAll files have been saved successfully.')
-	df.to_csv(OMI_data_path + 'combined_data.csv', index = False)
-	df_at_a_location.to_csv(OMI_data_path + 'combined_data_at_a_location.csv', index = False)       
+print('\nAll files have been saved successfully.')
+df.to_csv(OMI_data_path + 'combined_data.csv', index = False)
+df_at_a_location.to_csv(OMI_data_path + 'combined_data_at_a_location.csv', index = False)       
