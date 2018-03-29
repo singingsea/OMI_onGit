@@ -14,12 +14,15 @@ See the README associated with this module for more information.
 
 #import necessary modules
 import h5py
+import os
 
+OMI_file_path = 'C:\\Projects\\OMI\\NO2\\download2\\'
+os.chdir(OMI_file_path)
 #This finds the user's current path so that all hdf4 files can be found
 try:
 	fileList=open('fileList.txt','r')
 except:
-	print('Did not find a text file containing file names (perhaps name does not match)')
+	print('Did not find a text file contaiyning file names (perhaps name does not match)')
 	sys.exit()
 
 #loops through all files listed in the text file
