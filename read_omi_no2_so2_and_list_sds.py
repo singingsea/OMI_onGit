@@ -37,14 +37,19 @@ for FILE_NAME in fileList:
 		#checks if the file contains NO2 or SO2 data, and reacts accordingly
 		if 'NO2' in FILE_NAME:
 			print('\nThis is an OMI NO2 file. Here is a list of SDS in your file:\n')
-			dataFields=file['HDFEOS']['SWATHS']['ColumnAmountNO2']['Data Fields']            
+			dataFields=file['HDFEOS']['SWATHS']['ColumnAmountNO2']['Data Fields']       
+			geolocation=file['HDFEOS']['SWATHS']['ColumnAmountNO2']['Geolocation Fields']
 		elif 'SO2' in FILE_NAME:
 			print('\nThis is an OMI SO2 file. Here is a list of SDS in your file:\n')
 			dataFields=file['HDFEOS']['SWATHS']['OMI Total Column Amount SO2']['Data Fields']
+			geolocation=file['HDFEOS']['SWATHS']['OMI Total Column Amount SO2']['Geolocation Fields']
 		else:
 			print('The file named :',FILE_NAME, ' is not a valid OMI file. \n')
 			continue	
 		#Print the list of SDS found in the file 
+		[print('---Data Fields---')]
 		[print(' ' + i + ', dim='+ str(dataFields[i].shape) +' \n') for i in dataFields]
+		[print('---Geolocation Fields---')]
+		[print(' ' + i + ', dim='+ str(geolocation[i].shape) +' \n') for i in geolocation]
 		#close the hdf5 file 
 		file.close()
